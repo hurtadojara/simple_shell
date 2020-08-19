@@ -1,45 +1,27 @@
 #include "shell.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <sys/types.h>
-#include <unistd.h>
-#include <errno.h>
-#include <sys/wait.h>
-#include <sys/time.h>
-#include <sys/resource.h>
-
-int correr(eof *datos)
+/**
+*run - executes program
+*@data: pointer to structura
+*Return: 1 on success
+*/
+int run(shell_t *data)
 {
-    pid_t proceso;
-    int senal;
-    char *string;
+	int status;
 
-    if (datos->tokens == NULL)
-    {
-        perror("null input");
-        return(1);
-    }
-    if (datos->tokens[0][0] != '/')
-    {
-    datos->path = comparador();
-    datos->command = datos->tokens[0];
-    datos = find(datos);
-    }
-    proceso = fork();
-    if (proceso == 0)
+	if (data->token[0] == NULL)
 	{
-        if (execve(datos->tokens[0], datos->tokens, NULL) == -1)
-		{
-			perror("hsh");
-			return (0);
-		}
-		exit(0);
-	}
-    else if (proceso < 0)
-    {
-		perror("hsh");
 		return (1);
 	}
-    waitpid(proceso, &senal, WUNTRACED);
-	return (0);
+	status = process(data);
+	if (data->completecommand != NULL)
+	{
+		free(data->completecommand[0]);
+		free(data->completecommand);
+	}
+	if (status == 0)
+		mallocnt(data);
+	if (status == -1)
+		alternfree(data);
+
+	return (1);
 }

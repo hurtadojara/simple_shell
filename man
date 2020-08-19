@@ -1,0 +1,5 @@
+## man for simple shell.
+
+write a command with direction, shell accepts arguments, no path by the moment
+
+ctrl + D to get out of program.

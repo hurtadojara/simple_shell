@@ -1,31 +1,35 @@
 #include "shell.h"
-#include <stdio.h>
-#include <stdlib.h>
-
-eof *find(eof *value)
+/**
+ * find - search for a file in a directory
+ * @data: struct with data
+ * Return: teh path
+ */
+shell_t *find(shell_t *data)
 {
-    int letra = 0, arg = 0, i = 0;
-    char *string = malloc(sizeof(char) * 100);
+	DIR *dp;
+	struct dirent *dirp;
+	int i = 0;
 
-                while (value->path[value->ubicacion][i] != '\0')
-                {
-                    i++;
-                }
-                while (letra < i)
-                {
-                    string[letra] = value->path[value->ubicacion][letra];
-                    letra++;
-                }
-                string[letra] = '/';
-                letra++;
-                while (value->command[arg] != '\0')
-                {     
-                string[letra] = value->command[arg];
-                letra++;
-                arg++;
-                }
-                string[letra] = '\0';
-                value->fullc = string;
-                return (value);
-    //return("la cagaste, no sirve tu funcion");
+	while (data->path[i] != NULL)
+	{
+		dp = opendir(data->path[i]);
+		if (dp == NULL)
+		{
+			printf("can't open %s", data->path[i]);
+			exit(1);
+		}
+		while ((dirp = readdir(dp)) != NULL)
+		{
+			if (!_strcmp(dirp->d_name, data->token[0]))
+			{
+				closedir(dp);
+				data->completecommand = complete_string(data->path[i], data->token[0]);
+				return (data);
+			}
+		}
+	closedir(dp);
+	i++;
+	}
+	data->completecommand = NULL;
+	return (data);
 }
