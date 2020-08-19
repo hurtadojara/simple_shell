@@ -4,12 +4,15 @@
 *@data: struct with data
 *Return: pointer to struct
 */
-shell_t *input(shell_t *data)
+shell_t *input(void)
 {
 	int position = 0;
 	char *input = malloc(sizeof(char) * 1024);
 	char character;
+	shell_t *data = malloc(sizeof(shell_t));
+	char *str = malloc(sizeof(char) * 100);
 
+	data->str = str;
 	if (input == NULL)
 	{
 		fprintf(stderr, "hsh: error almacenamiento\n");
@@ -27,6 +30,7 @@ shell_t *input(shell_t *data)
 		{
 			free(input);
 			free(data);
+			free(str);
 			exit(EXIT_FAILURE);
 		}
 		else if (character == '\n')

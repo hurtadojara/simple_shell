@@ -5,19 +5,18 @@
 */
 int main(void)
 {
+	shell_t *data;
+
 while (1)
 {
 	if (errno == 1)
 	{
 		exit(1);
 	}
-	shell_t *data = malloc(sizeof(shell_t));
 	int i = 0;
 
-	data = input(data);
+	data = input();
 	data = tokenizador(data);
-	char *str = malloc(sizeof(char) * 100);
-
 	if (data->token[0][0] != '/')
 	{
 		data = comparador(data);
@@ -27,17 +26,15 @@ while (1)
 		{
 			while (data->completecommand[0][i] != '\0')
 			{
-				str[i] = data->completecommand[0][i];
+				data->str[i] = data->completecommand[0][i];
 				i++;
 			}
-		str[i] = '\0';
+		data->str[i] = '\0';
 		free(data->token[0]);
-		data->token[0] = strdup(str);
+		data->token[0] = strdup(data->str);
 		}
 	}
 	run(data);
-	free(str);
-
 }
 return (0);
 }

@@ -18,7 +18,7 @@ int mallocnt(shell_t *datos)
 	{
 		free(datos->path[borrador]);
 	}
-
+	free(datos->str);
 	free(datos->path);
 	free(datos->getline);
 	free(datos);

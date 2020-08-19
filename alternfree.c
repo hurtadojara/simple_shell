@@ -18,6 +18,7 @@ int alternfree(shell_t *data)
 	{
 		free(data->path[borrador]);
 	}
+	free(data->str);
 	free(data->path);
 	free(data->getline);
 	free(data);
