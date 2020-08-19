@@ -9,9 +9,11 @@ shell_t *input(void)
 	int position = 0;
 	char *input = malloc(sizeof(char) * 1024);
 	char character;
+	int i = 0;
 	shell_t *data = malloc(sizeof(shell_t));
 	char *str = malloc(sizeof(char) * 100);
 
+	data->i = i;
 	data->str = str;
 	if (input == NULL)
 	{
