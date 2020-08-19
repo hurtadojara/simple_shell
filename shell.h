@@ -28,9 +28,11 @@ typedef struct shell
 	char **token;
 	char **path;
 	char **completecommand;
+	char *str;
+	int i;
 } shell_t;
 #define BUFFER_SIZE 1024
-shell_t *input(shell_t *);
+shell_t *input();
 shell_t *tokenizador(shell_t *buffer);
 int run(shell_t *data);
 int mallocnt(shell_t *data);
