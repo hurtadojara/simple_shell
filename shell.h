@@ -19,6 +19,8 @@
 *@counterpath: counter for path liberation
 *@completecommand: direction and command in a string
 *@token: command and arguments
+*@str: string malloced
+*@i: integer for copying
 */
 typedef struct shell
 {

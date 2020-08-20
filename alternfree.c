@@ -22,5 +22,5 @@ int alternfree(shell_t *data)
 	free(data->path);
 	free(data->getline);
 	free(data);
-	return (0);
+	exit(0);
 }

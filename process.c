@@ -15,18 +15,18 @@ int process(shell_t *data)
 		if (_strcmp(data->token[0], "exit") == 0)
 		{
 			printf("Bye\n");
-			exit(1);
+			exit(0);
 		}
 		if (execve(data->token[0], data->token, NULL) == -1)
 		{
-			perror("shs");
-			return (-1);
+			perror("hsh");
+			return (1);
 		}
 	}
 	else if (pid < 0)
 	{
-		perror("shs");
-		return (-1);
+		perror("hsh");
+		return (1);
 	}
 	else
 	{
