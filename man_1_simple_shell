@@ -1,0 +1,25 @@
+TH hsh 1 "August 20 2020"  "1.0" "simple_shell Manual"
+
+.SH NAME
+.B simple_shell
+- a simple command interpreter
+
+.SH SYNOPSIS
+
+
+.SH DESCRIPTION
+
+simple_shell is a command line interpreter based on the first Unix shell created by Ken Thompson. simple_shell is minimalistic and contains the functions for the most basic shell tasks.
+
+.SH INVOCATION
+
+simple shell is compiled with GNU Compiler Collection. 
+
+
+.SH KNOWN BUGS
+needs two control D to exit program (August 20, 2020).
+Please report any issues to the authors.
+
+.SH AUTHORS
+
+Andrés Hurtado Jaramillo <\andreshurtadojaramillo@gmail.com\>
