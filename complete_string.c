@@ -11,7 +11,18 @@ char **complete_string(char *stringpath, char *command)
 	char *completestr = malloc(sizeof(char) * 100);
 	int i = 0, j = 0, k = 0;
 
-
+	if (arraystr == NULL)
+	{
+		perror("hsh: error almacenamiento\n");
+		free(arraystr);
+		exit(EXIT_FAILURE);
+	}
+	if (completestr == NULL)
+	{
+		perror("hsh: error almacenamiento\n");
+		free(completestr);
+		exit(EXIT_FAILURE);
+	}
 	while (stringpath[i] != '\0')
 	{
 		completestr[j] = stringpath[i];

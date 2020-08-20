@@ -10,6 +10,12 @@ shell_t *comparador(shell_t *data)
 	int words = 0;
 	char **ruta = malloc(sizeof(char *) * 30);
 
+	if (ruta == NULL)
+	{
+		perror("hsh: error almacenamiento\n");
+		free(ruta);
+		exit(EXIT_FAILURE);
+	}
 		str = getenv("PATH");
 		copiastr = strdup(str);
 		copia = strtok(copiastr, ":");

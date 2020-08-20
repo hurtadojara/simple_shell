@@ -20,7 +20,7 @@ int run(shell_t *data)
 	}
 	if (status == 0)
 		mallocnt(data);
-	if (status == -1)
+	if (status == 1)
 		alternfree(data);
 
 	return (status);

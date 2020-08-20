@@ -11,7 +11,7 @@ shell_t *tokenizador(shell_t *data)
 
 	if (tokens == NULL)
 	{
-		fprintf(stderr, "hsh: error almacenamiento\n");
+		perror("hsh: error almacenamiento\n");
 		free(tokens);
 		exit(EXIT_FAILURE);
 	}

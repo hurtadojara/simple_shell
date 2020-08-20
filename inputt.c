@@ -5,19 +5,19 @@
 */
 shell_t *input(void)
 {
-	int position = 0;
-	char *input = malloc(sizeof(char) * 1024);
-	char character;
-	int i = 0;
+	int position = 0, i = 0;
+	char *input = malloc(sizeof(char) * 1024), character,
+	 *str = malloc(sizeof(char) * 100);
 	shell_t *data = malloc(sizeof(shell_t));
-	char *str = malloc(sizeof(char) * 100);
 
 	data->i = i;
 	data->str = str;
-	if (input == NULL)
+	if (input == NULL || str == NULL || data == NULL)
 	{
-		fprintf(stderr, "hsh: error almacenamiento\n");
+		perror("hsh: error almacenamiento\n");
 		free(input);
+		free(str);
+		free(data);
 		exit(EXIT_FAILURE);
 	}
 	if (isatty(STDIN_FILENO))
@@ -32,7 +32,7 @@ shell_t *input(void)
 			free(input);
 			free(data);
 			free(str);
-			exit(EXIT_FAILURE);
+			exit(0);
 		}
 		else if (character == '\n')
 		{
