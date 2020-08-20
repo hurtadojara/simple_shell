@@ -1,7 +1,6 @@
 #include "shell.h"
 /**
 *input - reads stdin and put chars into input
-*@data: struct with data
 *Return: pointer to struct
 */
 shell_t *input(void)
