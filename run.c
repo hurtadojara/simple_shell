@@ -22,6 +22,5 @@ int run(shell_t *data)
 		mallocnt(data);
 	if (status == 1)
 		alternfree(data);
-
 	return (status);
 }

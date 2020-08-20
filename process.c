@@ -19,13 +19,13 @@ int process(shell_t *data)
 		}
 		if (execve(data->token[0], data->token, NULL) == -1)
 		{
-			perror("shs");
+			perror("hsh");
 			return (1);
 		}
 	}
 	else if (pid < 0)
 	{
-		perror("shs");
+		perror("hsh");
 		return (1);
 	}
 	else
