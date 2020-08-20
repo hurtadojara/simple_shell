@@ -8,7 +8,7 @@ shell_t *find(shell_t *data)
 {
 	DIR *dp;
 	struct dirent *dirp;
-	int i = 0;
+	int i = 1;
 
 	while (data->path[i] != NULL)
 	{

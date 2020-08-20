@@ -49,5 +49,8 @@ char **complete_string(char *, char *);
 int _strcmp(char *str1, char *str2);
 int process(shell_t *data);
 int alternfree(shell_t *data);
+int envp(shell_t *data);
+extern char **environ;
+char *getp(void);
 
 #endif

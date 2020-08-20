@@ -12,11 +12,6 @@ int process(shell_t *data)
 	pid = fork();
 	if (pid == 0)
 	{
-		if (_strcmp(data->token[0], "exit") == 0)
-		{
-			printf("Bye\n");
-			exit(0);
-		}
 		if (execve(data->token[0], data->token, NULL) == -1)
 		{
 			perror("hsh");

@@ -9,11 +9,19 @@ int main(void)
 
 while (1)
 {
-	if (errno == 1)
-	{
-		exit(1);
-	}
+
 	data = input();
+	if (data->getline != NULL)
+	{
+		if (data->getline[0] == 'e' && data->getline[3] == 't')
+		{
+			free(data->getline);
+			free(data->str);
+			free(data);
+			exit(0);
+		}
+	envp(data);
+	}
 	data = tokenizador(data);
 	if (data->token[0][0] != '/')
 	{
